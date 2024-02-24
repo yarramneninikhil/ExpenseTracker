@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Expense Tracker</h1>
+      <h4 class="premium"></h4>
+    </header>
+    <div class="input-section">
+      <form action="" method="POST" class="myForm">
+        <label for="amount">Enter the Expense Amount :</label>
+        <input type="number" id="amount" name="amount" />
+        <label for="description">Enter the Description :</label>
+        <input type="text" name="description" id="description" />
+        <label for="category">Choose the category :</label>
+        <select name="category" id="category">
+          <option value="food">Food</option>
+          <option value="movie">movie</option>
+          <option value="transport">Transport</option>
+          <option value="rent">Rent</option>
+        </select>
+        <button type="submit" class="add-btn">Add</button>
+      </form>
+      <div class="payment">
+        <button type="submit">Buy Premium</button>
+      </div>
+      <div class="download hidden">
+        <button type="submit" class="downloadbtn">Download</button>
+      </div>
+      <div class="leaderboard hidden">
+        <button type="submit" class="leaderbtn">Show LeaderBoard</button>
+      </div>
+    </div>
+    <div class="expenses-list">
+      <h2>Expenses List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="expense-table-body"></tbody>
+      </table>
+    </div>
+    <div class="leader-board hidden">
+      <h2>LeaderBoard</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>TotalExpenses</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-table-body"></tbody>
+      </table>
+    </div>
+    <div class="files hidden">
+      <h2>Files User Downloaded</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>File Url</th>
+          </tr>
+        </thead>
+        <tbody class="file-body"></tbody>
+      </table>
+    </div>
+    <footer>
+      <div class="pages">
+        <button class="btn previous">start</button>
+        <button class="btn page-number">1</button>
+        <button class="btn next">next</button>
+      </div>
+    </footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.3/axios.min.js"
+      integrity="sha512-JWQFV6OCC2o2x8x46YrEeFEQtzoNV++r9im8O8stv91YwHNykzIS2TbvAlFdeH0GVlpnyd79W0ZGmffcRi++Bw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

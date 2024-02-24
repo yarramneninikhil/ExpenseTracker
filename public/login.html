@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Page</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Please Login</h1>
+      </header>
+      <main>
+        <form action="./index.html" id="myForm" method="POST">
+          <div class="input-label">
+            <label for="email">Email:</label>
+          </div>
+          <div class="input-section">
+            <input type="email" name="email" class="email" required />
+          </div>
+          <div class="input-label">
+            <label for="password">Password:</label>
+          </div>
+          <div class="input-section">
+            <input type="password" name="password" class="password" required />
+          </div>
+          <div class="subbtn">
+            <button type="submit" class="btn">Submit</button>
+          </div>
+        </form>
+      </main>
+      <div class="login-link">
+        <a href="./forgotpassword.html">Forgot Password</a>
+      </div>
+      <div class="login-link">
+        <a href="./signup.html">Please Register Here</a>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.3/axios.min.js"
+      integrity="sha512-JWQFV6OCC2o2x8x46YrEeFEQtzoNV++r9im8O8stv91YwHNykzIS2TbvAlFdeH0GVlpnyd79W0ZGmffcRi++Bw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./login.js"></script>
+  </body>
+</html>
