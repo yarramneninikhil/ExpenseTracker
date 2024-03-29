@@ -3,8 +3,10 @@ const app = express();
 const cors = require("cors");
 const sequelize = require("./db/database");
 const helmet = require("helmet");
+const path = require("path");
 const postExpensesRouter = require("./router/expensedetailsrouter");
-app.use(helmet());
+// app.use(helmet());
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
@@ -14,6 +16,9 @@ const postRouter = require("./router/userdetailsrouter");
 const premiumRouter = require("./router/premiumaccountrouter");
 const passwordRouter = require("./router/userpasswordresetrouter");
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "signup.html"));
+});
 app.use(postRouter);
 app.use(postExpensesRouter);
 app.use(premiumRouter);

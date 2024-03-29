@@ -11,7 +11,7 @@ form.addEventListener("submit", (e) => {
 
 async function checkUser(obj) {
   try {
-    const response = await axios.post(`http://localhost:3000/login`, obj);
+    const response = await axios.post(`/login`, obj);
     const { status, data } = response;
     const accessKey = data.accessKey;
     if (status === 200) {
@@ -27,8 +27,3 @@ async function checkUser(obj) {
     }
   }
 }
-
-/*const forgetPassword = document.querySelector(".forgetbtn");
-forgetPassword.addEventListener("click", () => {
-  window.location.href = "./fillform.html";
-});*/
