@@ -12,7 +12,7 @@ form.addEventListener("submit", (e) => {
 
 async function postData(obj) {
   try {
-    const userData = await axios.post("http://localhost:3000/signup", obj);
+    const userData = await axios.post("/signup", obj);
     console.log(userData.data);
     alert("Successfully you have registered please login");
   } catch (err) {

@@ -10,10 +10,7 @@ form.addEventListener("submit", (e) => {
 
 async function resetPassword(obj) {
   try {
-    const { status, data } = await axios.post(
-      "http://localhost:3000/password/forgotpassword",
-      obj
-    );
+    const { status, data } = await axios.post("/password/forgotpassword", obj);
     if (status == 200) {
       alert("successfully password reset link send to email");
     }

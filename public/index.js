@@ -13,15 +13,11 @@ form.addEventListener("submit", (e) => {
   const token = localStorage.getItem("accesstoken");
   async function postExpenses(obj) {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/userexpense",
-        obj,
-        {
-          headers: {
-            Authorization: `${token}`,
-          },
-        }
-      );
+      const response = await axios.post("/userexpense", obj, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      });
       createExpenseList(response.data);
     } catch (err) {
       console.log(err);
@@ -50,14 +46,9 @@ function createExpenseList(obj) {
 
 async function deleteExpense(obj, row) {
   try {
-    const { status, data } = await axios.delete(
-      `http://localhost:3000/deleteexpense/${obj.id}`
-    );
+    const { status, data } = await axios.delete(`/deleteexpense/${obj.id}`);
     if (status === 200) {
-      const finalTotalExpense = await axios.post(
-        "http://localhost:3000/reducetotalexpense",
-        obj
-      );
+      const finalTotalExpense = await axios.post("/reducetotalexpense", obj);
       console.log(`reduced totalexpenses by ${obj.amount}`);
     }
     row.remove();
@@ -71,7 +62,7 @@ buyPremium.addEventListener("click", async () => {
   const token = localStorage.getItem("accesstoken");
   const amount = 100;
   const orderResponse = await axios.post(
-    "http://localhost:3000/buypremiumaccount",
+    "/buypremiumaccount",
     {
       amount,
     },
@@ -90,13 +81,10 @@ buyPremium.addEventListener("click", async () => {
     order_id: orderResponse.data.orderId,
     handler: async function (response) {
       console.log(response.razorpay_payment_id);
-      const { data } = await axios.post(
-        "http://localhost:3000/premiumpayment",
-        {
-          order_id: orderResponse.data.orderId,
-          payment_id: response.razorpay_payment_id,
-        }
-      );
+      const { data } = await axios.post("/premiumpayment", {
+        order_id: orderResponse.data.orderId,
+        payment_id: response.razorpay_payment_id,
+      });
 
       if (data.status === "success") {
         alert("Payment Successfull");
@@ -134,24 +122,12 @@ window.addEventListener("load", () => {
     buyPremium.remove();
     download.classList.remove("hidden");
   }
-
-  // async function fetchExpenses(token) {
-  //   const { data } = await axios.get(`http://localhost:3000/userexpenses`, {
-  //     headers: {
-  //       Authorization: `${token}`,
-  //     },
-  //   });
-  //   for (let obj of data) {
-  //     createExpenseList(obj);
-  //   }
-  // }
-  // fetchExpenses(token);
 });
 
 showLeaderBoard.addEventListener("click", async () => {
   try {
     const token = localStorage.getItem("accesstoken");
-    const { data } = await axios.get("http://localhost:3000/leaderboard", {
+    const { data } = await axios.get("/leaderboard", {
       headers: {
         Authorization: `${token}`,
       },
@@ -178,7 +154,7 @@ function createLeaderBoard(obj) {
 const downloadBtn = document.querySelector(".downloadbtn");
 downloadBtn.addEventListener("click", async () => {
   const token = localStorage.getItem("accesstoken");
-  const { data } = await axios.get("http://localhost:3000/download", {
+  const { data } = await axios.get("/download", {
     headers: {
       Authorization: `${token}`,
     },
@@ -204,7 +180,7 @@ function displayFiles(f, c) {
 async function filesUserDownloaded() {
   try {
     const token = localStorage.getItem("accesstoken");
-    const { data } = await axios.get("http://localhost:3000/files", {
+    const { data } = await axios.get("/files", {
       headers: {
         Authorization: `${token}`,
       },
@@ -236,7 +212,7 @@ async function getExpensesPerPage(p) {
   try {
     const token = localStorage.getItem("accesstoken");
     const pagenum = +p.textContent;
-    const { data } = await axios.get("http://localhost:3000/expensesperpage", {
+    const { data } = await axios.get("/expensesperpage", {
       params: {
         pageSize: window.innerWidth,
         pageNumber: pagenum,
